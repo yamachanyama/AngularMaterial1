@@ -1,0 +1,37 @@
+<div class="base">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <a mat-icon-button routerLink="">
+        <mat-icon>home</mat-icon>
+      </a>
+      <span style="flex:auto;"></span>
+      <span>Book Review</span>
+      <span style="flex:auto;"></span>
+      <button mat-icon-button (click)="loginCheck()">
+        <mat-icon>{{currentUser !='(not logined.)' ? 'done' : 'priority_high'}}</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <a mat-fab class="fab" routerLink="add">
+    <mat-icon>add</mat-icon>
+  </a>
+
+  <div class="user">[ USER: {{currentUser}} ]</div>
+
+  <nav>
+    <div>
+      <a routerLink="">Home</a>｜
+      <a [routerLink]="['fire']">Firebase</a>｜
+      <a [routerLink]="['material']">Material</a>｜
+      <a [routerLink]="['hello']">Hello</a>｜
+      <a [routerLink]="['msg']">Message</a>
+    </div>
+  </nav>
+  
+  <div class="content">
+    <router-outlet *ngIf="currentUser !='(not logined.)'"></router-outlet>
+    <mat-divider></mat-divider>
+    <p class="footer">S.Y.</p>
+  </div>
+</div>

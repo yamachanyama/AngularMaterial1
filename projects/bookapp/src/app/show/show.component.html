@@ -1,0 +1,47 @@
+<div>
+    <h1>Bookdata</h1>
+    <p>ID: {{inum}} </p>
+
+    <mat-form-field style="margin-right:10px;">
+        <input matInput [(ngModel)]="data.name"
+        placeholder="Name">
+    </mat-form-field>
+    <mat-form-field style="margin-right:10px;">
+        <input matInput [(ngModel)]="data.mail"
+        placeholder="Mail">
+    </mat-form-field>
+    <mat-form-field style="margin-right:10px;">
+        <input type="number" matInput [(ngModel)]="data.age" 
+        placeholder="Age">
+    </mat-form-field>
+    <button mat-stroked-button 
+        (click)="set()">SET</button>
+        &nbsp;
+    <button mat-stroked-button 
+        (click)="delete()">DELETE</button>
+    <p></p>
+
+    <!--
+    name:{{(data|async)?.name}},
+    mail:{{(data|async)?.mail}},
+    age:{{(data|async)?.age}}
+    -->
+
+    <!--
+    <mat-form-field style="margin-right:10px;">
+        <input matInput {{data[inum].name}}
+        placeholder="name">
+    </mat-form-field>
+    <mat-form-field style="margin-right:10px;">
+        <input matInput {{data[inum].mail}}
+        placeholder="mail">
+    </mat-form-field>
+    <mat-form-field style="margin-right:10px;">
+        <input type="number" matInput  
+        [(ngModel)]="age" placeholder="age">
+    </mat-form-field>
+    <button mat-stroked-button 
+        (click)="set()">SET</button>
+    -->
+
+</div>

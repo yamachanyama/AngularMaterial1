@@ -1,0 +1,49 @@
+<div>
+    <mat-form-field style="margin-right:10px;">
+      <input matInput [(ngModel)]="name" 
+        placeholder="Name">
+    </mat-form-field>
+    <mat-form-field style="margin-right:10px;">
+      <input matInput [(ngModel)]="mail" 
+        placeholder="Mail">
+    </mat-form-field>
+    <mat-form-field style="margin-right:10px;">
+      <input type="number" matInput  
+        [(ngModel)]="age" placeholder="Age">
+    </mat-form-field>
+    <button mat-stroked-button 
+      (click)="add()">Add</button>
+</div>
+<p></p>
+<div>
+  <mat-card>
+  <mat-nav-list>
+<!--
+  <a mat-list-item [routerLink]="['/show',ii]" *ngFor="let item of data; index as ii">
+-->
+<a mat-list-item routerLink="/show/{{item.id99}}" *ngFor="let item of data | async">
+  {{ item.id99 }}：　{{ item.name }},{{item.mail}},{{item.age}}
+  </a>
+  </mat-nav-list>
+  </mat-card>
+
+<!--
+  <p>
+        Options selected: {{items.selectedOptions.label}}
+    </p>
+
+    <table>
+        <tr>
+          <th>Name</th>
+          <th>Mail</th>
+          <th>Age</th>
+        </tr>
+        <tr *ngFor="let item of data">
+          <td>{{ item['name'] }}</td>
+          <td>{{ item['mail'] }}</td>
+          <td>{{ item['age'] }}</td>
+        </tr>
+    </table>
+  -->  
+</div>
+  

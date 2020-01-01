@@ -24,7 +24,6 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -118,6 +117,125 @@
           "configurations": {
             "production": {
               "devServerTarget": "newapp:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "bookapp": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/bookapp",
+      "sourceRoot": "projects/bookapp/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/bookapp",
+            "index": "projects/bookapp/src/index.html",
+            "main": "projects/bookapp/src/main.ts",
+            "polyfills": "projects/bookapp/src/polyfills.ts",
+            "tsConfig": "projects/bookapp/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/bookapp/src/favicon.ico",
+              "projects/bookapp/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/bookapp/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/bookapp/src/environments/environment.ts",
+                  "with": "projects/bookapp/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "bookapp:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "bookapp:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bookapp:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bookapp/src/test.ts",
+            "polyfills": "projects/bookapp/src/polyfills.ts",
+            "tsConfig": "projects/bookapp/tsconfig.spec.json",
+            "karmaConfig": "projects/bookapp/karma.conf.js",
+            "assets": [
+              "projects/bookapp/src/favicon.ico",
+              "projects/bookapp/src/assets"
+            ],
+            "styles": [
+              "projects/bookapp/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/bookapp/tsconfig.app.json",
+              "projects/bookapp/tsconfig.spec.json",
+              "projects/bookapp/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/bookapp/e2e/protractor.conf.js",
+            "devServerTarget": "bookapp:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "bookapp:serve:production"
             }
           }
         }
